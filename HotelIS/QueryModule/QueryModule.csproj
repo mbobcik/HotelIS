@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RelationalDatabaseConnector\RelationalDatabaseConnector.csproj">
+      <Project>{cf7220c6-ce73-42a2-908e-150a744bc30c}</Project>
+      <Name>RelationalDatabaseConnector</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
