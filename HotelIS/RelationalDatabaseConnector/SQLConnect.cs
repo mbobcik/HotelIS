@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using HotelModel;
 
 namespace RelationalDatabaseConnector
 {
@@ -36,5 +37,15 @@ namespace RelationalDatabaseConnector
             connection.Open();
         }
 
+        public bool UpdateRoomColumn(string id, string column, string value, string condition="")
+        {
+            string query = "UPDATE rooms SET " + column + "='" + value + "' WHERE id ='" + id + "' " + condition;
+            MySqlCommand sqlCommand = new MySqlCommand(query, connection);
+            var executed = sqlCommand.ExecuteReader();
+
+            return executed.RecordsAffected.Equals(1);
+        }
+
+        
     }
 }

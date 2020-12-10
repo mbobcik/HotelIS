@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelIS
+namespace HotelModel
 {
-    class Program
+    public class Model
     {
-        static void Main(string[] args)
-        {
-        }
+        public int id { get; set; }
     }
 }
