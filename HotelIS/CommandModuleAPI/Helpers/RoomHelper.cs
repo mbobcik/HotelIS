@@ -9,29 +9,29 @@ namespace CommandModuleAPI.Helpers
 {
     public class RoomHelper
     {
-        private static SQLConnect database = new SQLConnect();
+        private static DatabaseCommands database = new DatabaseCommands();
 
         public static bool AddGuestToEmptyRoom(string roomId, Room room)
         {
             return database.UpdateRoomColumn(roomId, "guest", room.guest.ToString(), "AND guest='1'");
         }
 
-        internal static object FreeRoom(string roomId)
+        internal static bool FreeRoom(string roomId)
         {
             return database.UpdateRoomColumn(roomId, "guest", "1");
         }
 
-        internal static object SetCleanRoom(string roomId)
+        internal static bool SetCleanRoom(string roomId)
         {
             return database.UpdateRoomColumn(roomId, "toClean", "0");
         }
 
-        internal static object SetDirtyRoom(string roomId)
+        internal static bool SetDirtyRoom(string roomId)
         {
             return database.UpdateRoomColumn(roomId, "toClean", "1");
         }
 
-        internal static object SetRoomPrice(string roomId, Room room)
+        internal static bool SetRoomPrice(string roomId, Room room)
         {
             return database.UpdateRoomColumn(roomId, "price", room.price.ToString());
         }

@@ -9,14 +9,14 @@ namespace CommandModuleAPI.Helpers
 {
     public class HotelHelper
     {
-        private static SQLConnect database = new SQLConnect();
+        private static DatabaseCommands database = new DatabaseCommands();
 
         internal static int AddRoom(Room room)
         {
             return database.InsertRoom(room);
         }
 
-        internal static object RemoveRoom(string room)
+        internal static bool RemoveRoom(string room)
         {
             return database.RemoveRoom(room);
         }
@@ -26,7 +26,7 @@ namespace CommandModuleAPI.Helpers
             return database.InsertHotel(hotel);
         }
 
-        internal static object RemoveHotel(string hotel)
+        internal static bool RemoveHotel(string hotel)
         {
             return database.RemoveHotel(hotel);
         }
