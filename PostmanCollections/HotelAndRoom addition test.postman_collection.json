@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "3c07198a-e42a-4739-90e4-c4b6a9a123f3",
+		"name": "HotelAndRoom addition test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddHotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a28361cc-b96d-4b9a-ad60-f8a6c8d30867",
+						"exec": [
+							"pm.environment.set(\"hotelId\",pm.response.text());\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Continental\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/command/hotel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"hotel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddRoom",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbcb1c15-8e41-4109-9a45-28bfaaff31a4",
+						"exec": [
+							"pm.environment.set(\"roomId\",pm.response.text());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roomNumber\": 104,\r\n    \"floor\": 1,\r\n    \"price\": 350,\r\n    \"toClean\": 0,\r\n    \"guest\": 1,\r\n    \"hotel\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/command/hotel/room",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"hotel",
+						"room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RemoveRoom",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "39b51181-50d7-4d8d-a37f-2708bc6d75c3",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/command/hotel/room/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"hotel",
+						"room",
+						"3"
+					]
+				},
+				"description": "set id"
+			},
+			"response": []
+		},
+		{
+			"name": "remove hotel",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/command/hotel/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"hotel",
+						"4"
+					]
+				},
+				"description": "set id"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

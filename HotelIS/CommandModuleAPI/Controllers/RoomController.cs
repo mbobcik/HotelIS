@@ -42,7 +42,5 @@ namespace CommandModuleAPI.Controllers
         {
             return RoomHelper.SetRoomPrice(roomId, room).ToString();
         }
-
-
     }
 }
