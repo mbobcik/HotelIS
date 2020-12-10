@@ -1,12 +1,13 @@
 ALTER TABLE `rooms`DROP FOREIGN KEY `FK_GuestInRoom`;
 ALTER TABLE `rooms`DROP FOREIGN KEY `FK_RoomInHotel`; 
-ALTER TABLE `rooms`DROP FOREIGN KEY `FK_ReceptionInHotel`; 
-ALTER TABLE `rooms`DROP FOREIGN KEY `FK_CleanerInHotel`;  
+ALTER TABLE `receptions`DROP FOREIGN KEY `FK_ReceptionInHotel`; 
+ALTER TABLE `cleaners`DROP FOREIGN KEY `FK_CleanerInHotel`;  
 
 DROP TABLE `rooms`;
 DROP TABLE `guests`;
-DROP TABLE `receptions`
+DROP TABLE `receptions`;
 DROP TABLE `cleaners`;
+DROP TABLE `hotels`;
 
 CREATE TABLE `rooms` (
 	`id` INT AUTO_INCREMENT ,
@@ -28,10 +29,9 @@ CREATE TABLE `guests` (
 
 CREATE TABLE `receptions` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`hotelFK` INT,
 	`description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
     `hotel` INT,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`)  
 );
 
 CREATE TABLE `cleaners` (
@@ -48,7 +48,7 @@ CREATE TABLE `hotels` (
 );
 
 ALTER TABLE `rooms`
-ADD CONSTRAINT `FK_GuestInRoom`
+ADD CONSTRAINT `FK_GuestInRoom` 
 FOREIGN KEY (guest) REFERENCES guests(id);
 
 ALTER TABLE `rooms`

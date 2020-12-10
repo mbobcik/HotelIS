@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1300
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectionEngine", "ProjectionEngine\ProjectionEngine.csproj", "{5BFF8F13-7003-48C3-9C8A-65C0F7D93CDF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelationalDatabaseConnector", "RelationalDatabaseConnector\RelationalDatabaseConnector.csproj", "{CF7220C6-CE73-42A2-908E-150A744BC30C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoSQLConnector", "NoSQLConnector\NoSQLConnector.csproj", "{CBE6B9FE-C18E-42D1-ADB9-C6C7378A29A0}"
@@ -15,16 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandModuleAPI", "Command
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelModel", "ClassLibrary1\HotelModel.csproj", "{A13E35A4-54F7-4B6A-AAD4-5E0D31D5987D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectionEngineAPI", "ProjectionEngineAPI\ProjectionEngineAPI.csproj", "{7B33B37F-DF75-46B5-B7BF-3EA123027E57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5BFF8F13-7003-48C3-9C8A-65C0F7D93CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BFF8F13-7003-48C3-9C8A-65C0F7D93CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BFF8F13-7003-48C3-9C8A-65C0F7D93CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BFF8F13-7003-48C3-9C8A-65C0F7D93CDF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF7220C6-CE73-42A2-908E-150A744BC30C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF7220C6-CE73-42A2-908E-150A744BC30C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF7220C6-CE73-42A2-908E-150A744BC30C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{A13E35A4-54F7-4B6A-AAD4-5E0D31D5987D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A13E35A4-54F7-4B6A-AAD4-5E0D31D5987D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A13E35A4-54F7-4B6A-AAD4-5E0D31D5987D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B33B37F-DF75-46B5-B7BF-3EA123027E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B33B37F-DF75-46B5-B7BF-3EA123027E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B33B37F-DF75-46B5-B7BF-3EA123027E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B33B37F-DF75-46B5-B7BF-3EA123027E57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
