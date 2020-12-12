@@ -7,11 +7,11 @@ using Cassandra;
 
 namespace NoSQLConnector
 {
-    public class CassandraConnect
+    internal class CassandraConnect
     {
-        private Cluster cluster;
-        private static ISession guestsKeyspace;
-        private static ISession roomsKeyspace;
+        internal Cluster cluster;
+        internal ISession guestsKeyspace;
+        internal ISession roomsKeyspace;
 
         public CassandraConnect()
         {

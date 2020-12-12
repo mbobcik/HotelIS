@@ -6,6 +6,7 @@ using System.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RelationalDatabaseConnector;
+using NoSQLConnector;
 
 namespace ProjectionEngineAPI.Controllers
 {
@@ -18,6 +19,8 @@ namespace ProjectionEngineAPI.Controllers
         {
             var x = new ProjectionQueries();
             var y = x.GetRooms();
+            var a = new ClusterCommands();
+            a.InsertRooms(y);
             return y;
         }
     }
