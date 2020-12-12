@@ -16,31 +16,41 @@ namespace CommandModuleAPI.Controllers
         [HttpPut("occupy/{roomId}")]
         public ActionResult<string> OccupyCommand(string roomId, [FromBody] Room room)
         {
-            return RoomHelper.AddGuestToEmptyRoom(roomId, room).ToString();
+            var result = RoomHelper.AddGuestToEmptyRoom(roomId, room).ToString();
+            ProjectionHelper.ProjectRooms();
+            return result;
         }
 
         [HttpPut("free/{roomId}")]
         public ActionResult<string> FreeCommand(string roomId)
         {
-            return RoomHelper.FreeRoom(roomId).ToString();
+            var result = RoomHelper.FreeRoom(roomId).ToString();
+            ProjectionHelper.ProjectRooms();
+            return result;
         }
 
         [HttpPut("clean/{roomId}")]
         public ActionResult<string> CleanCommand(string roomId)
         {
-            return RoomHelper.SetCleanRoom(roomId).ToString();
+            var result = RoomHelper.SetCleanRoom(roomId).ToString();
+            ProjectionHelper.ProjectRooms();
+            return result;
         }
 
         [HttpPut("dirty/{roomId}")]
         public ActionResult<string> DirtyCommand(string roomId)
         {
-            return RoomHelper.SetDirtyRoom(roomId).ToString();
+            var result = RoomHelper.SetDirtyRoom(roomId).ToString();
+            ProjectionHelper.ProjectRooms();
+            return result;
         }
 
         [HttpPut("price/{roomId}")]
         public ActionResult<string> ChangePriceCommand(string roomId, [FromBody] Room room)
         {
-            return RoomHelper.SetRoomPrice(roomId, room).ToString();
+            var result = RoomHelper.SetRoomPrice(roomId, room).ToString();
+            ProjectionHelper.ProjectRooms();
+            return result;
         }
     }
 }

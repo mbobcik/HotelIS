@@ -16,25 +16,33 @@ namespace CommandModuleAPI.Controllers
         [HttpPost("room")]
         public ActionResult<string> AddRoomCommand([FromBody] Room room)
         {
-            return HotelHelper.AddRoom(room).ToString();
+            var result = HotelHelper.AddRoom(room).ToString();
+            ProjectionHelper.ProjectRooms();
+            return result;
         }
 
         [HttpDelete("room/{roomId}")]
         public ActionResult<string> RemoveRoomCommand(string roomId)
         {
-            return HotelHelper.RemoveRoom(roomId).ToString();
+            var result = HotelHelper.RemoveRoom(roomId).ToString();
+            // ProjectionHelper.ProjectRooms();
+            return result;
         }
 
         [HttpPost]
         public ActionResult<string> AddHotelCommand([FromBody] Hotel hotel)
         {
-            return HotelHelper.AddHotel(hotel).ToString();
+            var result = HotelHelper.AddHotel(hotel).ToString();
+            ProjectionHelper.ProjectRooms();
+            return result;
         }
 
         [HttpDelete("{hotelId}")]
         public ActionResult<string> RemoveHotelCommand(string hotelId)
         {
-            return HotelHelper.RemoveHotel(hotelId).ToString();
+            var result = HotelHelper.RemoveHotel(hotelId).ToString();
+            // ProjectionHelper.ProjectRooms();
+            return result;
         }
     }
 }
