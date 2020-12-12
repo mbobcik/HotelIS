@@ -20,10 +20,12 @@ namespace RelationalDatabaseConnector
         public bool UpdateRoomColumn(string id, string column, string value, string condition = "")
         {
             string query = "UPDATE rooms SET " + column + "='" + value + "' WHERE id ='" + id + "' " + condition;
-            MySqlCommand command = new MySqlCommand(query, SQL.connection);
-            var executed = command.ExecuteReader();
-
-            return command.ExecuteNonQuery().Equals(1);
+            bool result;
+            using (MySqlCommand command = new MySqlCommand(query, SQL.connection))
+            {
+                result = command.ExecuteNonQuery().Equals(1);
+            }
+            return result;
         }
 
         public int InsertRoom(Room room)
@@ -50,9 +52,13 @@ namespace RelationalDatabaseConnector
         private bool RemoveFrom(string table, string id)
         {
             string query = "DELETE FROM " + table + " WHERE `id`=@id";
-            MySqlCommand command = new MySqlCommand(query, SQL.connection);
-            command.Parameters.AddWithValue("id", id);
-            return command.ExecuteNonQuery().Equals(1);
+            bool result;
+            using (MySqlCommand command = new MySqlCommand(query, SQL.connection)) { 
+                command.Parameters.AddWithValue("id", id);
+                result = command.ExecuteNonQuery().Equals(1);
+
+            }
+            return result;
         }
 
         public bool RemoveRoom(string id)

@@ -27,15 +27,14 @@ namespace RelationalDatabaseConnector
                     INNER JOIN hotels h ON h.id = r.hotel
                     INNER JOIN guests g ON g.id = r.guest
                 ORDER BY hotel ASC, floor ASC, roomNumber ASC";
-
+            var dataTable = new DataTable();
             using (MySqlCommand command = new MySqlCommand(query, SQL.connection))
             {
                 var dataReader = command.ExecuteReader();
-                var dataTable = new DataTable();
                 dataTable.Load(dataReader);
-                return dataTable;
+                dataReader.Dispose();
             }
-
+            return dataTable;
         }
     }
 }
