@@ -22,7 +22,8 @@ namespace RelationalDatabaseConnector
         {
             string query = @"
                 SELECT h.name as hotel, r.floor as floor, r.roomNumber as roomNumber,
-                       r.price AS cost, g.firstName as firstName, g.lastName as lastName, r.toClean as toClean
+                       r.price AS cost, g.firstName as firstName, g.lastName as lastName,
+                       r.toClean as toClean, r.id as roomId, h.id as hotelId, g.id as guestid
                 FROM rooms r
                     INNER JOIN hotels h ON h.id = r.hotel
                     INNER JOIN guests g ON g.id = r.guest

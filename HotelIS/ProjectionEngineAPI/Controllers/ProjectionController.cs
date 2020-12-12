@@ -23,7 +23,7 @@ namespace ProjectionEngineAPI.Controllers
         {
             var rooms = SQL.GetRooms();
             NoSQL.InsertRooms(rooms, message.Truncate);
-            return rooms;
+            return message.SendSQLQueryResult ? rooms : null;
         }
     }
 }

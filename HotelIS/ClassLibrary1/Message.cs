@@ -7,5 +7,6 @@ namespace HotelModel
     public class Message  
     {
         public Boolean Truncate;
+        public Boolean SendSQLQueryResult;
     }
 }
