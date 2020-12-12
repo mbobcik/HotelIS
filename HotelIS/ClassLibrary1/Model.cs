@@ -7,6 +7,6 @@ namespace HotelModel
 {
     public class Model
     {
-        public int id { get; set; }
+        public int id { get; set; } = 0;
     }
 }

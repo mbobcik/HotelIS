@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS rooms.byHotel (
     )
 ) WITH comment = 'Find rooms for each hotel';
 
+
 CREATE TABLE IF NOT EXISTS rooms.byGuest (
     guestFullName TEXT,
     hotel text,
@@ -61,6 +62,10 @@ CREATE TABLE IF NOT EXISTS rooms.byGuest (
         roomNumber
     )
 ) WITH comment = 'Find rooms by guest accomodated';
+
+CREATE INDEX IF NOT EXISTS byHotelId ON rooms.byhotel (hotelId);
+CREATE INDEX IF NOT EXISTS toOccupyByHotelId ON rooms.tooccupy (hotelId);
+
 
 CREATE TABLE IF NOT EXISTS guests.byName(
     id text,
