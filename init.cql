@@ -1,6 +1,32 @@
 CREATE KEYSPACE IF NOT EXISTS rooms WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};
 CREATE KEYSPACE IF NOT EXISTS guests WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};
 
+CREATE TABLE IF NOT EXISTS rooms.toOccupy (
+    hotel text,
+    floor INT,
+    roomNumber INT,
+    cost float,
+    roomId INT,
+    hotelId INT,
+    PRIMARY KEY (
+        (hotel),
+        floor,
+        roomNumber
+    )
+) WITH comment = 'Find empty and unoccupied rooms for each hotel';
+
+CREATE TABLE IF NOT EXISTS rooms.toClean (
+    hotel text,
+    floor INT,
+    roomNumber INT,
+    roomId INT,
+    hotelId INT,
+    PRIMARY KEY (
+        (hotel),
+        floor,
+        roomNumber
+    )
+) WITH comment = 'Find rooms in need of cleaning';
 
 CREATE TABLE IF NOT EXISTS rooms.byHotel (
     hotel text,
@@ -9,6 +35,9 @@ CREATE TABLE IF NOT EXISTS rooms.byHotel (
     cost float,
     guestFullName TEXT,
     toClean boolean,
+    roomId INT,
+    hotelId INT,
+    guestId INT,
     PRIMARY KEY (
         (hotel),
         floor,
@@ -23,6 +52,9 @@ CREATE TABLE IF NOT EXISTS rooms.byGuest (
     roomNumber INT,
     cost float,
     toClean boolean,
+    roomId INT,
+    hotelId INT,
+    guestId INT,
     PRIMARY KEY (
         (guestFullName),
         floor,

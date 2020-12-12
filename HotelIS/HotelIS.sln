@@ -9,11 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoSQLConnector", "NoSQLConn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelISFrontEnd", "ConsoleApp1\HotelISFrontEnd.csproj", "{29B5BB11-8C71-4415-A746-4C71C33EB104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandModuleAPI", "CommandModuleAPI\CommandModuleAPI.csproj", "{0851DBFE-B775-470B-9368-757290756B64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandModuleAPI", "CommandModuleAPI\CommandModuleAPI.csproj", "{0851DBFE-B775-470B-9368-757290756B64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelModel", "ClassLibrary1\HotelModel.csproj", "{A13E35A4-54F7-4B6A-AAD4-5E0D31D5987D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelModel", "ClassLibrary1\HotelModel.csproj", "{A13E35A4-54F7-4B6A-AAD4-5E0D31D5987D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectionEngineAPI", "ProjectionEngineAPI\ProjectionEngineAPI.csproj", "{7B33B37F-DF75-46B5-B7BF-3EA123027E57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectionEngineAPI", "ProjectionEngineAPI\ProjectionEngineAPI.csproj", "{7B33B37F-DF75-46B5-B7BF-3EA123027E57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryModuleAPI", "QueryModuleAPI\QueryModuleAPI.csproj", "{73B357D9-28DE-4ED2-9255-BDF04E64E36E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7B33B37F-DF75-46B5-B7BF-3EA123027E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B33B37F-DF75-46B5-B7BF-3EA123027E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B33B37F-DF75-46B5-B7BF-3EA123027E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73B357D9-28DE-4ED2-9255-BDF04E64E36E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73B357D9-28DE-4ED2-9255-BDF04E64E36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73B357D9-28DE-4ED2-9255-BDF04E64E36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73B357D9-28DE-4ED2-9255-BDF04E64E36E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
