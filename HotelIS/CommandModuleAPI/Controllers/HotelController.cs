@@ -25,7 +25,7 @@ namespace CommandModuleAPI.Controllers
         public ActionResult<string> RemoveRoomCommand(string roomId)
         {
             var result = HotelHelper.RemoveRoom(roomId).ToString();
-            // ProjectionHelper.ProjectRooms();
+            ProjectionHelper.TruncateAndProjectRooms();
             return result;
         }
 
@@ -41,7 +41,7 @@ namespace CommandModuleAPI.Controllers
         public ActionResult<string> RemoveHotelCommand(string hotelId)
         {
             var result = HotelHelper.RemoveHotel(hotelId).ToString();
-            // ProjectionHelper.ProjectRooms();
+            ProjectionHelper.TruncateAndProjectRooms();
             return result;
         }
     }

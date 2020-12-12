@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RelationalDatabaseConnector;
 using NoSQLConnector;
+using HotelModel;
 
 namespace ProjectionEngineAPI.Controllers
 {
@@ -14,14 +15,15 @@ namespace ProjectionEngineAPI.Controllers
     [ApiController]
     public class ProjectionController : ControllerBase
     {
+        private static ProjectionQueries SQL = new ProjectionQueries();
+        private static ClusterCommands NoSQL = new ClusterCommands();
+
         [HttpPost("rooms")]
-        public ActionResult<DataTable> ProjectRooms()
+        public ActionResult<DataTable> ProjectRooms([FromBody] Message message)
         {
-            var x = new ProjectionQueries();
-            var y = x.GetRooms();
-            var a = new ClusterCommands();
-            a.InsertRooms(y);
-            return y;
+            var rooms = SQL.GetRooms();
+            NoSQL.InsertRooms(rooms, message.Truncate);
+            return rooms;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
+using HotelModel;
 
 namespace CommandModuleAPI.Helpers
 {
@@ -19,7 +20,12 @@ namespace CommandModuleAPI.Helpers
 
         internal static void ProjectRooms()
         {
-            _ = client.PostAsync(endpoint + "rooms", new StringContent("")).ConfigureAwait(false);
+            _ = client.PostAsJsonAsync<Message>(endpoint + "rooms", new Message() { Truncate = false }).ConfigureAwait(false);
+        }
+
+        internal static void TruncateAndProjectRooms()
+        {
+            _ = client.PostAsJsonAsync(endpoint + "rooms", new Message() { Truncate = true}).ConfigureAwait(false);
         }
     }
 }
