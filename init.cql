@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS rooms.byGuest (
 
 CREATE INDEX IF NOT EXISTS byHotelId ON rooms.byhotel (hotelId);
 CREATE INDEX IF NOT EXISTS toOccupyByHotelId ON rooms.tooccupy (hotelId);
-
+CREATE INDEX IF NOT EXISTS toCleanByHotelId ON rooms.toclean (hotelId);
 
 CREATE TABLE IF NOT EXISTS guests.byName(
     id text,

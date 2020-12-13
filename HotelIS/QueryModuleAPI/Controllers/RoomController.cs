@@ -32,11 +32,18 @@ namespace QueryModuleAPI.Controllers
         }
 
         [HttpGet("toclean")]
-        public ActionResult<DataTable> GetListDirty ([FromBody] Hotel hotel)
+        public ActionResult<List<CassandraRoom>> GetListDirty ([FromBody] Hotel hotel)
         {
-            throw new NotImplementedException();
+            List<CassandraRoom> result = RoomQuery.ToClean(hotel);
+            return result;
         }
 
+        [HttpGet()]
+        public ActionResult<List<CassandraRoom>> GetListByHotel([FromBody] Hotel hotel)
+        {
+            List<CassandraRoom> result = RoomQuery.ByHotel(hotel);
+            return result;
+        }
 
     }
 }

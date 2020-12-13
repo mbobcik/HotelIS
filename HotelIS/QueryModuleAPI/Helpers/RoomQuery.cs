@@ -34,8 +34,46 @@ namespace QueryModuleAPI.Helpers
         internal static CassandraRoom ToOccupyCheapest(Hotel hotel)
         {
             List<CassandraRoom> unoccupied = ToOccupy(hotel);
-            var result = unoccupied.OrderBy(c => c.Cost).FirstOrDefault();
+            var result = unoccupied
+                .OrderBy(c => c.Cost)
+                .FirstOrDefault();
 
+            return result;
+        }
+
+        internal static List<CassandraRoom> ToClean(Hotel hotel)
+        {
+            List<CassandraRoom> result;
+            if (hotel.id != 0)
+            {
+                result = NoSQL.GetRoomToClean(hotel.id);
+            }
+            else if (hotel.name != null)
+            {
+                result = NoSQL.GetRoomToClean(hotel.name);
+            }
+            else
+            {
+                result = NoSQL.GetRoomToClean();
+            }
+            return result;
+        }
+
+        internal static List<CassandraRoom> ByHotel(Hotel hotel)
+        {
+            List<CassandraRoom> result;
+            if (hotel.id != 0)
+            {
+                result = NoSQL.GetRoomByHotel(hotel.id);
+            }
+            else if (hotel.name != null)
+            {
+                result = NoSQL.GetRoomByHotel(hotel.name);
+            }
+            else
+            {
+                result = NoSQL.GetRoomByHotel();
+            }
             return result;
         }
     }

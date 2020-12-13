@@ -14,6 +14,9 @@ namespace NoSQLConnector
     {
         private CassandraConnect NoSQL;
         private const string selectRoomsToOccupy = "select * from rooms.tooccupy ";
+        private const string selectRoomsToClean = "select * from rooms.toclean ";
+        private const string selectRoomsByHotel = "select * from rooms.byhotel ";
+
         public ClusterQueries()
         {
             NoSQL = new CassandraConnect();
@@ -22,28 +25,61 @@ namespace NoSQLConnector
         public List<CassandraRoom> GetRoomToOccupy(int id)
         {
             string query = $"{selectRoomsToOccupy} where hotelId={id}";
-            return GetRoomToOccupyFiltered(query);
+            return Execute(query);
         }
 
         public List<CassandraRoom> GetRoomToOccupy(string name)
         {
             string query = $"{selectRoomsToOccupy} where hotel='{name}'";
-            return GetRoomToOccupyFiltered(query);
+            return Execute(query);
         }
 
         public List<CassandraRoom> GetRoomToOccupy()
         {
-            return GetRoomToOccupyFiltered(selectRoomsToOccupy);
+            return Execute(selectRoomsToOccupy);
         }
 
-        private List<CassandraRoom> GetRoomToOccupyFiltered(string query)
+        public List<CassandraRoom> GetRoomToClean(int id)
+        {
+            string query = $"{selectRoomsToClean} where hotelId={id}";
+            return Execute(query);
+        }
+
+       public List<CassandraRoom> GetRoomToClean(string name)
+        {
+            string query = $"{selectRoomsToClean} where hotel='{name}'";
+            return Execute(query);
+        }
+
+        public List<CassandraRoom> GetRoomToClean()
+        {
+            return Execute(selectRoomsToClean);
+        }
+
+         private List<CassandraRoom> Execute(string query)
         {
             var statement = new SimpleStatement(query);
             statement.SetPageSize(1000);
-            List<CassandraRoom> result = NoSQL.guestsKeyspace.Execute(statement).ToCassandraRoom();
+            List<CassandraRoom> result = NoSQL.roomsKeyspace.Execute(statement).ToCassandraRoom();
             return result;
         }
-        
+
+        public List<CassandraRoom> GetRoomByHotel(string name)
+        {
+            string query = $"{selectRoomsByHotel} where hotel='{name}'";
+            return Execute(query);
+        }
+
+        public List<CassandraRoom> GetRoomByHotel(int id)
+        {
+            string query = $"{selectRoomsByHotel} where hotelId={id}";
+            return Execute(query);
+        }
+
+        public List<CassandraRoom> GetRoomByHotel()
+        {
+            return Execute(selectRoomsByHotel);
+        }
 
     }
 }

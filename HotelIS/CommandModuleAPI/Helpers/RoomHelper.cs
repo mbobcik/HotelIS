@@ -18,7 +18,8 @@ namespace CommandModuleAPI.Helpers
 
         internal static bool FreeRoom(string roomId)
         {
-            return database.UpdateRoomColumn(roomId, "guest", "1");
+            bool result = database.UpdateRoomColumn(roomId, "guest", "1") && SetDirtyRoom(roomId);
+            return result;
         }
 
         internal static bool SetCleanRoom(string roomId)

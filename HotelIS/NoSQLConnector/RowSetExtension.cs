@@ -39,14 +39,22 @@ namespace NoSQLConnector
         public static List<CassandraRoom> ToCassandraRoom(this RowSet rows)
         {
             List<CassandraRoom> result = new List<CassandraRoom>();
+            string whichQuery = rows.Columns.First().Table;
             foreach (var row in rows)
             {
+                float cost = whichQuery.Equals("toclean") ? float.NaN : row.GetValue<float>("cost");
+
+                string guestFullName = whichQuery.Equals("byhotel") ? row.GetValue<string>("guestfullname") : String.Empty;
+                int guestId = whichQuery.Equals("byhotel") ? row.GetValue<int>("guestid") : 0;
+
                 CassandraRoom cr = new CassandraRoom()
                 {
                     Hotel = row.GetValue<string>("hotel"),
                     Floor = row.GetValue<int>("floor"),
                     RoomNumber = row.GetValue<int>("roomnumber"),
-                    Cost = row.GetValue<float>("cost"),
+                    Cost = cost,
+                    GuestFullName = guestFullName,
+                    GuestId = guestId,
                     HotelId = row.GetValue<int>("hotelid"),
                     RoomId = row.GetValue<int>("roomid")
                 };
