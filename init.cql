@@ -67,30 +67,31 @@ CREATE INDEX IF NOT EXISTS byHotelId ON rooms.byhotel (hotelId);
 CREATE INDEX IF NOT EXISTS toOccupyByHotelId ON rooms.tooccupy (hotelId);
 CREATE INDEX IF NOT EXISTS toCleanByHotelId ON rooms.toclean (hotelId);
 
-CREATE TABLE IF NOT EXISTS guests.byName(
-    id text,
-    firstName text,
-    lastName text,
-    hotel text,
-    roomNumber INT,
-    floor INT,
-    PRIMARY KEY (
-        (lastName),
-        id
-    )
-) WITH comment = 'Find Guests by their name';
-
-
-CREATE TABLE IF NOT EXISTS guests.byHotel(
-    id text,
-    firstName text,
-    lastName text,
-    hotel text,
-    roomNumber INT,
-    floor INT,
-    PRIMARY KEY (
-        (hotel),
-        firstName,
-        lastName
-    )
-) WITH comment = 'Find Guests by their name';
+#CREATE TABLE IF NOT EXISTS guests.byName(
+#    id text,
+#    firstName text,
+#    lastName text,
+#    hotel text,
+#    roomNumber INT,
+#    floor INT,
+#    PRIMARY KEY (
+#        (lastName),
+#        id
+#    )
+#) WITH comment = 'Find Guests by their name';
+#
+#
+#CREATE TABLE IF NOT EXISTS guests.byHotel(
+#    id text,
+#    firstName text,
+#    lastName text,
+#    hotel text,
+#    roomNumber INT,
+#    floor INT,
+#    PRIMARY KEY (
+#        (hotel),
+#        firstName,
+#        lastName
+#    )
+#) WITH comment = 'Find Guests by their name';
+#
