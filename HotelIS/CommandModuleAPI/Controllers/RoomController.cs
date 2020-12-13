@@ -17,7 +17,7 @@ namespace CommandModuleAPI.Controllers
         public ActionResult<string> OccupyCommand(string roomId, [FromBody] Room room)
         {
             var result = RoomHelper.AddGuestToEmptyRoom(roomId, room).ToString();
-            ProjectionHelper.ProjectRooms();
+            ProjectionHelper.TruncateAndProjectRooms();
             return result;
         }
 
@@ -25,7 +25,7 @@ namespace CommandModuleAPI.Controllers
         public ActionResult<string> FreeCommand(string roomId)
         {
             var result = RoomHelper.FreeRoom(roomId).ToString();
-            ProjectionHelper.ProjectRooms();
+            ProjectionHelper.TruncateAndProjectRooms();
             return result;
         }
 
@@ -33,7 +33,7 @@ namespace CommandModuleAPI.Controllers
         public ActionResult<string> CleanCommand(string roomId)
         {
             var result = RoomHelper.SetCleanRoom(roomId).ToString();
-            ProjectionHelper.ProjectRooms();
+            ProjectionHelper.TruncateAndProjectRooms();
             return result;
         }
 
@@ -41,7 +41,7 @@ namespace CommandModuleAPI.Controllers
         public ActionResult<string> DirtyCommand(string roomId)
         {
             var result = RoomHelper.SetDirtyRoom(roomId).ToString();
-            ProjectionHelper.ProjectRooms();
+            ProjectionHelper.TruncateAndProjectRooms();
             return result;
         }
 
@@ -49,7 +49,7 @@ namespace CommandModuleAPI.Controllers
         public ActionResult<string> ChangePriceCommand(string roomId, [FromBody] Room room)
         {
             var result = RoomHelper.SetRoomPrice(roomId, room).ToString();
-            ProjectionHelper.ProjectRooms();
+            ProjectionHelper.TruncateAndProjectRooms();
             return result;
         }
     }
