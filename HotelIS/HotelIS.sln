@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1300
@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelModel", "ClassLibrary1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectionEngineAPI", "ProjectionEngineAPI\ProjectionEngineAPI.csproj", "{7B33B37F-DF75-46B5-B7BF-3EA123027E57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryModuleAPI", "QueryModuleAPI\QueryModuleAPI.csproj", "{73B357D9-28DE-4ED2-9255-BDF04E64E36E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryModuleAPI", "QueryModuleAPI\QueryModuleAPI.csproj", "{73B357D9-28DE-4ED2-9255-BDF04E64E36E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{307A1AE4-BC38-4C14-97A3-6C3EB5503E6D}"
 EndProject
