@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "76160d84-5866-477f-91f9-1e0f951cf83f",
+		"name": "CommonUsage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Systém obsahuje množství různě obsazených pokojů.  Zákazník přijde na recepci a chce se ubytovat. Recepce se dotáže na volné pokoje.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Hotel Cirrus Shake\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/api/query/room/unoccupied",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"query",
+						"room",
+						"unoccupied"
+					]
+				},
+				"description": "Systém obsahuje množství různě obsazených pokojů.  Zákazník přijde na recepci a chce se ubytovat. Recepce se dotáže na volné pokoje."
+			},
+			"response": []
+		},
+		{
+			"name": "Zákazník si přeje nejlevnější.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Hotel Cirrus Shake\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/api/query/room/unoccupied/cheapest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"query",
+						"room",
+						"unoccupied",
+						"cheapest"
+					]
+				},
+				"description": "Zákazník si přeje nejlevnější."
+			},
+			"response": []
+		},
+		{
+			"name": "Recepce nově nalezený pokoj přidělí zákazníkovi.",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"guest\": 42\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/command/room/occupy/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"room",
+						"occupy",
+						"103"
+					]
+				},
+				"description": "Recepce nově nalezený pokoj přidělí zákazníkovi.\r\n\r\n(Je potřeba najít volný pokoj a jeho id vložit do routy)"
+			},
+			"response": []
+		},
+		{
+			"name": "Zákazník si přeje uklidit svůj pokoj",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/command/room/dirty/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"room",
+						"dirty",
+						"103"
+					]
+				},
+				"description": "Zákazník si přeje uklidit svůj pokoj. Na (například) informačním panelu pokoje zadá požadavek."
+			},
+			"response": []
+		},
+		{
+			"name": "Uklízečka průběžně kontroluje stav úklidu",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Hotel Cirrus Shake\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/api/query/room/toclean",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"query",
+						"room",
+						"toclean"
+					]
+				},
+				"description": "Uklízečka průběžně kontroluje stav úklidu, zjistí, že je potřeba jejích služeb a vydá se konat."
+			},
+			"response": []
+		},
+		{
+			"name": "Po dokončení oznámí, že je pokoj čistý ",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/command/room/clean/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"room",
+						"clean",
+						"103"
+					]
+				},
+				"description": "Po dokončení oznámí, že je pokoj čistý "
+			},
+			"response": []
+		},
+		{
+			"name": "Zákazník se rozhodne svůj pobyt ukončit.",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/command/room/free/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"room",
+						"free",
+						"103"
+					]
+				},
+				"description": "Zákazník se rozhodne svůj pobyt ukončit. Přijde na recepci a představí svůj požadavek "
+			},
+			"response": []
+		},
+		{
+			"name": "znovu proběhne kolo s uklízečkou.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Hotel Cirrus Shake\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/api/query/room/toclean",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"query",
+						"room",
+						"toclean"
+					]
+				},
+				"description": "Tím se pokoj uvolní, ale také se pokoj označí k úklidu, a znova proběhne kolo s uklízečkou. "
+			},
+			"response": []
+		},
+		{
+			"name": "Po dokončení oznámí, že je pokoj čistý  Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/command/room/clean/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"room",
+						"clean",
+						"103"
+					]
+				},
+				"description": "Po dokončení oznámí, že je pokoj čistý "
+			},
+			"response": []
+		},
+		{
+			"name": "Po uklizení se pokoj opět objeví v RoomQuery.GetListUnoccupied. ",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Hotel Cirrus Shake\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/api/query/room/unoccupied",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"query",
+						"room",
+						"unoccupied"
+					]
+				},
+				"description": "Po uklizení se pokoj opět objeví v RoomQuery.GetListUnoccupied. "
+			},
+			"response": []
+		},
+		{
+			"name": "zvýší se cena pokoje ",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/command/room/price/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"command",
+						"room",
+						"price",
+						"103"
+					]
+				},
+				"description": "Mimo to se také o tento pokoj zvýšil zájem a zvýší se jeho cena "
+			},
+			"response": []
+		},
+		{
+			"name": "Po této změně již není nejlevnější pokoj",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Hotel Cirrus Shake\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/api/query/room/unoccupied/cheapest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"api",
+						"query",
+						"room",
+						"unoccupied",
+						"cheapest"
+					]
+				},
+				"description": "Po této změně se už neukáže v RoomQuery.GetUnoccupiedCheapest."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
