@@ -8,6 +8,7 @@ using HotelModel;
 using System.Data;
 using QueryModuleAPI.Helpers;
 using Cassandra;
+using System.Data.Common;
 
 namespace QueryModuleAPI.Controllers
 {
@@ -23,7 +24,12 @@ namespace QueryModuleAPI.Controllers
             return result; 
         }
 
-        //GetUnoccupiedCheapest
+        [HttpGet("unoccupied/cheapest")]
+        public ActionResult<DataTable> GetUnoccupiedCheapest([FromBody] Hotel hotel)
+        {
+            DataTable result = RoomQuery.ToOccupyCheapest(hotel);
+            return result;
+        }
 
         //GetListDirty 
 
