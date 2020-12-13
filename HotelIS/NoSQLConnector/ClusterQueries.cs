@@ -13,45 +13,37 @@ namespace NoSQLConnector
     public class ClusterQueries
     {
         private CassandraConnect NoSQL;
+        private const string selectRoomsToOccupy = "select * from rooms.tooccupy ";
         public ClusterQueries()
         {
             NoSQL = new CassandraConnect();
         }
 
-        public RowSet GetRoomToOccupy(int id)
+        public DataTable GetRoomToOccupy(int id)
         {
-            return GetRoomToOccupyFiltered("hotelid", id.ToString());
+            string query = $"{selectRoomsToOccupy} where hotelId={id}";
+            return GetRoomToOccupyFiltered(query);
         }
 
-        public RowSet GetRoomToOccupy(string name)
+        public DataTable GetRoomToOccupy(string name)
         {
-            return GetRoomToOccupyFiltered("hotel", name);
+            string query = $"{selectRoomsToOccupy} where hotel='{name}'";
+            return GetRoomToOccupyFiltered(query);
         }
 
-        private RowSet GetRoomToOccupyFiltered(string column, string value)
+        public DataTable GetRoomToOccupy()
         {
-            string query = $"select * from rooms.tooccupy  where {column}='{value}'";
+            return GetRoomToOccupyFiltered(selectRoomsToOccupy);
+        }
+
+        private DataTable GetRoomToOccupyFiltered(string query)
+        {
             var statement = new SimpleStatement(query);
             statement.SetPageSize(1000);
-            RowSet result = NoSQL.guestsKeyspace.Execute(statement);
+            DataTable result = NoSQL.guestsKeyspace.Execute(statement).ToDataTable("rooms.toOccupy");
             return result;
         }
+        
 
-        public RowSet GetRoomToOccupy()
-        {
-            throw new NotImplementedException();
-        }
-
-        static DataTable ToDataTable(RowSet rows)
-        {
-            DataTable result = new DataTable();
-            
-            foreach (var row in rows)
-            {
-                result.NewRow();
-            }
-
-            return result;
-        }
     }
 }

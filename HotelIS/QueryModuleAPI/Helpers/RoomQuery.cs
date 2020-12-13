@@ -13,9 +13,9 @@ namespace QueryModuleAPI.Helpers
     {
         public static ClusterQueries NoSQL = new ClusterQueries();
 
-        internal static RowSet ToOccupy(Hotel hotel)
+        internal static DataTable ToOccupy(Hotel hotel)
         {
-            RowSet result;
+            DataTable result;
             if(hotel.id != 0)
             {
                 result = NoSQL.GetRoomToOccupy(hotel.id);

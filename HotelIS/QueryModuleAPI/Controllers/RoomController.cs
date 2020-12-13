@@ -16,10 +16,11 @@ namespace QueryModuleAPI.Controllers
     public class RoomController : ControllerBase
     {
         [HttpGet("unoccupied")]
-        public ActionResult<RowSet> GetListUnoccupied([FromBody] Hotel hotel)
+        public ActionResult<DataTable> GetListUnoccupied([FromBody] Hotel hotel)
         {
-            RowSet result = RoomQuery.ToOccupy(hotel);
-            return result; // takhle to vrací jenom pole polí s hodnotami rádků a sloupců, chtělo by to nějak ručně zkonvertovat na ten DataTable, i guess
+            Console.WriteLine("Get Unoccupied in " + hotel.name);
+            DataTable result = RoomQuery.ToOccupy(hotel);
+            return result; 
         }
 
         //GetUnoccupiedCheapest

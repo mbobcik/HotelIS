@@ -154,6 +154,7 @@
     <Compile Include="ClusterCommands.cs" />
     <Compile Include="ClusterQueries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RowSetExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
