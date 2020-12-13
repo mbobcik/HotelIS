@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelISFrontEnd
 {
-    class Program
+    class RoomCommand
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
