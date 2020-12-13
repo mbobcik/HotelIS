@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Cassandra;
+using HotelModel;
 
 namespace NoSQLConnector
 {
@@ -32,6 +33,25 @@ namespace NoSQLConnector
                 result.Rows.Add(newRow);
             }
 
+            return result;
+        }
+
+        public static List<CassandraRoom> ToCassandraRoom(this RowSet rows)
+        {
+            List<CassandraRoom> result = new List<CassandraRoom>();
+            foreach (var row in rows)
+            {
+                CassandraRoom cr = new CassandraRoom()
+                {
+                    Hotel = row.GetValue<string>("hotel"),
+                    Floor = row.GetValue<int>("floor"),
+                    RoomNumber = row.GetValue<int>("roomnumber"),
+                    Cost = row.GetValue<float>("cost"),
+                    HotelId = row.GetValue<int>("hotelid"),
+                    RoomId = row.GetValue<int>("roomid")
+                };
+                result.Add(cr);
+            }
             return result;
         }
 

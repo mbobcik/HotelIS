@@ -19,28 +19,28 @@ namespace NoSQLConnector
             NoSQL = new CassandraConnect();
         }
 
-        public DataTable GetRoomToOccupy(int id)
+        public List<CassandraRoom> GetRoomToOccupy(int id)
         {
             string query = $"{selectRoomsToOccupy} where hotelId={id}";
             return GetRoomToOccupyFiltered(query);
         }
 
-        public DataTable GetRoomToOccupy(string name)
+        public List<CassandraRoom> GetRoomToOccupy(string name)
         {
             string query = $"{selectRoomsToOccupy} where hotel='{name}'";
             return GetRoomToOccupyFiltered(query);
         }
 
-        public DataTable GetRoomToOccupy()
+        public List<CassandraRoom> GetRoomToOccupy()
         {
             return GetRoomToOccupyFiltered(selectRoomsToOccupy);
         }
 
-        private DataTable GetRoomToOccupyFiltered(string query)
+        private List<CassandraRoom> GetRoomToOccupyFiltered(string query)
         {
             var statement = new SimpleStatement(query);
             statement.SetPageSize(1000);
-            DataTable result = NoSQL.guestsKeyspace.Execute(statement).ToDataTable("rooms.toOccupy");
+            List<CassandraRoom> result = NoSQL.guestsKeyspace.Execute(statement).ToCassandraRoom();
             return result;
         }
         

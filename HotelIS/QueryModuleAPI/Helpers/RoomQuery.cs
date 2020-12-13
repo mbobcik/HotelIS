@@ -13,9 +13,9 @@ namespace QueryModuleAPI.Helpers
     {
         public static ClusterQueries NoSQL = new ClusterQueries();
 
-        internal static DataTable ToOccupy(Hotel hotel)
+        internal static List<CassandraRoom> ToOccupy(Hotel hotel)
         {
-            DataTable result;
+            List<CassandraRoom> result;
             if (hotel.id != 0)
             {
                 result = NoSQL.GetRoomToOccupy(hotel.id);
@@ -31,17 +31,10 @@ namespace QueryModuleAPI.Helpers
             return result;
         }
 
-        internal static DataTable ToOccupyCheapest(Hotel hotel)
+        internal static CassandraRoom ToOccupyCheapest(Hotel hotel)
         {
-            DataTable unoccupied = ToOccupy(hotel);
-            var resultRow = unoccupied.Rows
-                .Cast<DataRow>().AsQueryable()
-                .OrderBy(r => r.Table.Columns.IndexOf("cost"))
-                .FirstOrDefault();
-
-            DataTable result = unoccupied.Clone();
-            result.Clear();
-            result.Rows.Add(resultRow.ItemArray);
+            List<CassandraRoom> unoccupied = ToOccupy(hotel);
+            var result = unoccupied.OrderBy(c => c.Cost).FirstOrDefault();
 
             return result;
         }

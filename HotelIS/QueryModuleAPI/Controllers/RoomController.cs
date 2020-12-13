@@ -17,21 +17,25 @@ namespace QueryModuleAPI.Controllers
     public class RoomController : ControllerBase
     {
         [HttpGet("unoccupied")]
-        public ActionResult<DataTable> GetListUnoccupied([FromBody] Hotel hotel)
+        public ActionResult<List<CassandraRoom>> GetListUnoccupied([FromBody] Hotel hotel)
         {
             Console.WriteLine("Get Unoccupied in " + hotel.name);
-            DataTable result = RoomQuery.ToOccupy(hotel);
+            List<CassandraRoom> result = RoomQuery.ToOccupy(hotel);
             return result; 
         }
 
         [HttpGet("unoccupied/cheapest")]
-        public ActionResult<DataTable> GetUnoccupiedCheapest([FromBody] Hotel hotel)
+        public ActionResult<CassandraRoom> GetUnoccupiedCheapest([FromBody] Hotel hotel)
         {
-            DataTable result = RoomQuery.ToOccupyCheapest(hotel);
+            CassandraRoom result = RoomQuery.ToOccupyCheapest(hotel);
             return result;
         }
 
-        //GetListDirty 
+        [HttpGet("toclean")]
+        public ActionResult<DataTable> GetListDirty ([FromBody] Hotel hotel)
+        {
+            throw new NotImplementedException();
+        }
 
 
     }
